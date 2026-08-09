@@ -3,7 +3,7 @@ let dishCount = 1;
 
 button.addEventListener("click", function(){
     dishCount ++;
-    const dishId = `dish-$(dishCount)`;
+    const dishId = `dish-${dishCount}`;
 
     const newDish = document.createElement("fieldset");
     const legend = document.createElement("legend");
