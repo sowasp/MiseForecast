@@ -15,11 +15,14 @@
         <section>
             <h2>Service</h2>
             <label for="covers">Expected covers</label> 
-            <input type="number" id="covers">
-            <!--for is for the label to know that it 'belongs' to the input id-->
+            <input type="number" id="covers" min="0" step="1"> 
+            <!--step one is for the num to be whole it steps one unite at a time 1, 2, 3 etc...-->
+            <!--attribute 'for' is for the label to know that it 'belongs' to the input id-->
         </section>
         <section>
             <h2>Dishes</h2>
+            <label for="dish">Dish name</label>
+            <input type="text" id="dish">
         </section>
         <section>
             <h2>Current stock</h2>
