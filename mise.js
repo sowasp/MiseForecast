@@ -1,5 +1,6 @@
 const button = document.querySelector("#add-dish");
 let dishCount = 1;
+const dishes = document.querySelector("#dishes")
 
 button.addEventListener("click", function(){
     dishCount ++;
@@ -11,13 +12,20 @@ button.addEventListener("click", function(){
     legend.textContent = "dish";
     newDish.appendChild(legend);
 
-    const dishLabel = document.createElement("label")
-    dishLabel.textContent = "Dish name"
-    dishLabel.setAttribute("for", dishId)
+    const dishLabel = document.createElement("label");
+    dishLabel.textContent = "Dish name";
+    dishLabel.setAttribute("for", dishId);
+    newDish.appendChild(dishLabel);
 
-    const dishInput = document.createElement("input")
-    dishInput.setAttribute("type", "text")
-    dishInput.setAttribute("id", dishId)
+    const dishInput = document.createElement("input");
+    dishInput.setAttribute("type", "text");
+    dishInput.setAttribute("id", dishId);
+    newDish.appendChild(dishInput);
+
+    dishes.appendChild(newDish);
+
+    
+
     
     
 
