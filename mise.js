@@ -5,6 +5,8 @@ const dishes = document.querySelector("#dishes")
 button.addEventListener("click", function(){
     dishCount ++;
     const dishId = `dish-${dishCount}`;
+    const popId = `popularity-${dishCount}`;
+    const stockId = `stock-${dishCount}`;
     const newDish = document.createElement("fieldset");
     
     const legend = document.createElement("legend");
@@ -22,22 +24,22 @@ button.addEventListener("click", function(){
 
     const popLabel = document.createElement("label");
     popLabel.textContent = "Popularity";
-    popLabel.setAttribute("for", "popularity");
+    popLabel.setAttribute("for", popId);
     newDish.appendChild(popLabel);
     const popInput = document.createElement("input");
     popInput.setAttribute("type", "number");
-    popInput.setAttribute("id", "popularity");
+    popInput.setAttribute("id", popId);
     popInput.setAttribute("min", "0");
     popInput.setAttribute("max", "100");
     newDish.appendChild(popInput);
 
     const stockLabel = document.createElement("label");
     stockLabel.textContent = "Current stock";
-    stockLabel.setAttribute("for", "stock");
+    stockLabel.setAttribute("for", stockId);
     newDish.appendChild(stockLabel);
     const stockInput = document.createElement("input");
     stockInput.setAttribute("type", "number");
-    stockInput.setAttribute("id", "stock");
+    stockInput.setAttribute("id", stockId);
     stockInput.setAttribute("min", "0");
     stockInput.setAttribute("step", "1");
     newDish.appendChild(stockInput);
