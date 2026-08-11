@@ -31,6 +31,7 @@ button.addEventListener("click", function(){
     popInput.setAttribute("id", popId);
     popInput.setAttribute("min", "0");
     popInput.setAttribute("max", "100");
+    popInput.setAttribute("step", "1");
     newDish.appendChild(popInput);
 
     const stockLabel = document.createElement("label");
@@ -47,9 +48,25 @@ button.addEventListener("click", function(){
 
     dishes.appendChild(newDish);
 
-    
-
-  
-    
-
 })
+
+const forecastButton = document.querySelector("#forecast")
+
+forecastButton.addEventListener("click", function(){
+
+    const covers = document.querySelector("#covers");
+    const numCovers = Number(covers.value);
+    const popularityInputs = document.querySelectorAll("[id^='popularity']")
+    const stockInputs = document.querySelectorAll("[id^='stock']")
+
+    for(let i = 0; i < popularityInputs.length; i++) {
+        const popularity = Number(popularityInputs[i].value)
+        const expected = (numCovers * popularity) / 100
+        const stock = Number(stockInputs[i].value);
+        const prepNeeded = expected - stock;
+    }
+});
+
+
+
+
