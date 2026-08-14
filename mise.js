@@ -71,8 +71,13 @@ forecastButton.addEventListener("click", function(){
         const stock = Number(stockInputs[i].value);
         const prepNeeded = expected - stock;
         
-    
-        result += dishNames[i].value + ": " + prepNeeded + " portions" + "\n"
+        if (prepNeeded > 0) {
+
+            result += dishNames[i].value + ": " + prepNeeded + " portions" + "\n"
+        } else {
+            result += dishNames[i].value + ": " +"No prep needed.\n"
+        }
+        
 
     }
 
