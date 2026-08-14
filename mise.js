@@ -52,19 +52,32 @@ button.addEventListener("click", function(){
 
 const forecastButton = document.querySelector("#forecast")
 
+
 forecastButton.addEventListener("click", function(){
+
+  
 
     const covers = document.querySelector("#covers");
     const numCovers = Number(covers.value);
     const popularityInputs = document.querySelectorAll("[id^='popularity']")
     const stockInputs = document.querySelectorAll("[id^='stock']")
+    let result = ""
+
+    const dishNames = document.querySelectorAll("input[id^='dish']")
 
     for(let i = 0; i < popularityInputs.length; i++) {
         const popularity = Number(popularityInputs[i].value)
         const expected = (numCovers * popularity) / 100
         const stock = Number(stockInputs[i].value);
         const prepNeeded = expected - stock;
+        
+    
+        result += dishNames[i].value + ": " + prepNeeded + " portions" + "\n"
+
     }
+
+    const forecastOut = document.querySelector("#forecast-output")
+    forecastOut.textContent = result
 });
 
 
