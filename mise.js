@@ -69,7 +69,7 @@ forecastButton.addEventListener("click", function(){
         const popularity = Number(popularityInputs[i].value)
         const expected = (numCovers * popularity) / 100
         const stock = Number(stockInputs[i].value);
-        const prepNeeded = expected - stock;
+        const prepNeeded = Math.ceil(expected - stock);
         
         if (prepNeeded > 0) {
 
