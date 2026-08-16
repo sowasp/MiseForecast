@@ -2,11 +2,25 @@ const button = document.querySelector("#add-dish");
 let dishCount = 1;
 const dishes = document.querySelector("#dishes")
 
+function getDishInputs() {
+    const popularityInputs = document.querySelectorAll("[id^='popularity']");
+    const stockInputs = document.querySelectorAll("[id^='stock']");
+    const dishNames = document.querySelectorAll("input[id^='dish']");
+
+    return {
+        popularityInputs,
+        stockInputs,
+        dishNames
+    };
+}
+
 button.addEventListener("click", function(){
     dishCount ++;
     const dishId = `dish-${dishCount}`;
     const popId = `popularity-${dishCount}`;
     const stockId = `stock-${dishCount}`;
+    //Unique IDs keep each label connected to its own input.
+
     const newDish = document.createElement("fieldset");
     
     const legend = document.createElement("legend");
@@ -50,40 +64,48 @@ button.addEventListener("click", function(){
 
 })
 
-const forecastButton = document.querySelector("#forecast")
+const forecastButton = document.querySelector("#forecast");
 
 
 forecastButton.addEventListener("click", function(){
 
-  
 
+    
+    const inputs = getDishInputs();
     const covers = document.querySelector("#covers");
+    let result = "";
+   
+    if (covers.value === "") {
+        return 
+    } 
+
     const numCovers = Number(covers.value);
-    const popularityInputs = document.querySelectorAll("[id^='popularity']")
-    const stockInputs = document.querySelectorAll("[id^='stock']")
-    let result = ""
 
-    const dishNames = document.querySelectorAll("input[id^='dish']")
-
-    for(let i = 0; i < popularityInputs.length; i++) {
-        const popularity = Number(popularityInputs[i].value)
-        const expected = (numCovers * popularity) / 100
-        const stock = Number(stockInputs[i].value);
-        const prepNeeded = Math.ceil(expected - stock);
+    for(let i = 0; i < inputs.popularityInputs.length; i++) {
+        const popularity = Number(inputs.popularityInputs[i].value);
+        const expected = (numCovers * popularity) / 100;
+        const stock = Number(inputs.stockInputs[i].value);
+        const prepNeeded = Math.ceil(expected - stock); 
+        // Prefer Math.ceil so forecasted prep never rounds below expected demand.
+        
         
         if (prepNeeded > 0) {
 
-            result += dishNames[i].value + ": " + prepNeeded + " portions" + "\n"
+            result += inputs.dishNames[i].value + ": " + prepNeeded + " portions" + "\n";
         } else {
-            result += dishNames[i].value + ": " +"No prep needed.\n"
+            result += inputs.dishNames[i].value + ": " +"No prep needed.\n";
         }
         
 
     }
 
-    const forecastOut = document.querySelector("#forecast-output")
-    forecastOut.textContent = result
+    const forecastOut = document.querySelector("#forecast-output");
+    forecastOut.textContent = result;
+    
 });
+    
+    
+
 
 
 
