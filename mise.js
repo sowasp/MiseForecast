@@ -15,6 +15,18 @@ function getDishInputs() {
 }
 
 button.addEventListener("click", function(){
+    
+    const inputs = getDishInputs();
+    const lastIndex = inputs.dishNames.length - 1;
+    if (
+        inputs.dishNames[lastIndex].value === "" ||
+        inputs.popularityInputs[lastIndex].value === "" ||
+        inputs.stockInputs[lastIndex].value === ""
+        ){
+            return
+        }
+    
+
     dishCount ++;
     const dishId = `dish-${dishCount}`;
     const popId = `popularity-${dishCount}`;
