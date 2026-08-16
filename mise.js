@@ -1,6 +1,10 @@
 const button = document.querySelector("#add-dish");
 let dishCount = 1;
-const dishes = document.querySelector("#dishes")
+const dishes = document.querySelector("#dishes");
+const forecastButton = document.querySelector("#forecast");
+const deleteButton = document.querySelector("#delete-dish");
+
+
 
 function getDishInputs() {
     const popularityInputs = document.querySelectorAll("[id^='popularity']");
@@ -76,7 +80,20 @@ button.addEventListener("click", function(){
 
 })
 
-const forecastButton = document.querySelector("#forecast");
+deleteButton.addEventListener("click", function(){
+    const fieldsets = document.querySelectorAll("#dishes fieldset");
+    const lastIndex = fieldsets.length - 1;
+    if(fieldsets.length === 1){
+        return;
+    } 
+    fieldsets[lastIndex].remove();
+    
+
+    
+})
+
+
+
 
 
 forecastButton.addEventListener("click", function(){
@@ -101,6 +118,14 @@ forecastButton.addEventListener("click", function(){
         // Prefer Math.ceil so forecasted prep never rounds below expected demand.
         
         
+        
+        if (
+            inputs.dishNames[i].value === "" ||
+            inputs.popularityInputs[i].value === "" ||
+            inputs.stockInputs[i].value === ""
+            ){
+                continue
+            }
         if (prepNeeded > 0) {
 
             result += inputs.dishNames[i].value + ": " + prepNeeded + " portions" + "\n";
